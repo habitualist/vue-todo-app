@@ -59,7 +59,7 @@ function deleteTodo(id) {
   saveTodos()
 }
 
-// NEW: Edit functionality
+
 function startEdit(todo) {
   editingId.value = todo.id
   editText.value = todo.text
@@ -89,9 +89,9 @@ function saveEdit(id) {
     <div class="card">
       
       <h1 class="title">My Todo App</h1>
-      <p class="subtitle">CRUD Application with Vue.js</p>
+      <p class="subtitle">ORGANISE YOUR DELIVERABLES</p>
       
-      <!-- Add Todo Form -->
+     
       <div class="input-group">
         <input 
           v-model="newTodoText"
@@ -104,7 +104,7 @@ function saveEdit(id) {
         </button>
       </div>
       
-      <!-- Todo List -->
+     
       <ul class="todo-list">
         <li v-for="todo in todos" :key="todo.id" class="todo-item">
           
@@ -115,7 +115,7 @@ function saveEdit(id) {
             class="checkbox"
           >
           
-          <!-- View Mode -->
+        
           <span 
             v-if="editingId !== todo.id"
             :class="['todo-text', { completed: todo.completed }]"
@@ -124,7 +124,7 @@ function saveEdit(id) {
             {{ todo.text }}
           </span>
 
-          <!-- Edit Mode -->
+         
           <input 
             v-else
             v-model="editText"
@@ -134,7 +134,7 @@ function saveEdit(id) {
             autofocus
           >
           
-          <!-- Action Buttons -->
+        
           <div class="actions">
             <template v-if="editingId === todo.id">
               <button @click="saveEdit(todo.id)" class="btn-save">
@@ -156,12 +156,12 @@ function saveEdit(id) {
         </li>
       </ul>
       
-      <!-- Empty State -->
+     
       <div v-if="todos.length === 0" class="empty-state">
         No todos yet. Add one above to get started! 🚀
       </div>
       
-      <!-- Footer -->
+ 
       <div class="footer">
         <p>{{ remainingText }}</p>
       </div>
@@ -171,7 +171,7 @@ function saveEdit(id) {
 </template>
 
 <style scoped>
-/* Container & Layout */
+
 .app-container {
   min-height: 100vh;
   background: #1a1a1a;
@@ -187,7 +187,7 @@ function saveEdit(id) {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
-/* Typography */
+
 .title {
   text-align: center;
   color: #ffffff;
@@ -203,7 +203,6 @@ function saveEdit(id) {
   font-size: 14px;
 }
 
-/* Input Group */
 .input-group {
   display: flex;
   gap: 10px;
@@ -226,7 +225,7 @@ function saveEdit(id) {
   border-color: #4CAF50;
 }
 
-/* Buttons */
+
 .btn-add {
   padding: 14px 28px;
   background: #4CAF50;
@@ -293,7 +292,7 @@ function saveEdit(id) {
   font-size: 14px;
 }
 
-/* Todo List */
+
 .todo-list {
   list-style: none;
   padding: 0;
@@ -352,7 +351,7 @@ function saveEdit(id) {
   flex-shrink: 0;
 }
 
-/* Empty State */
+
 .empty-state {
   text-align: center;
   padding: 50px 20px;
@@ -361,7 +360,7 @@ function saveEdit(id) {
   font-size: 16px;
 }
 
-/* Footer */
+
 .footer {
   margin-top: 30px;
   padding-top: 20px;
@@ -375,7 +374,7 @@ function saveEdit(id) {
   margin: 0;
 }
 
-/* Responsive Design */
+
 @media (max-width: 640px) {
   .app-container {
     padding: 10px;
