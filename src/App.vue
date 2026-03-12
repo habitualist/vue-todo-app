@@ -23,7 +23,7 @@ onMounted(() => {
       { id: 1, text: 'Learn Vue', completed: false },
       { id: 2, text: 'Build Todo App', completed: false },
       { id: 3, text: 'Show my team', completed: false },
-      { id: 4, text: 'Fix Update', completed: false }  // FIXED: Changed from id: 3 to id: 4
+      { id: 4, text: 'Fix Update', completed: false }  
     ]
     saveTodos()
   }
@@ -163,7 +163,7 @@ function saveEdit(id) {
 </template>
 
 <style scoped>
-/* Container & Layout */
+
 .app-container {
   min-height: 100vh;
   background: #1a1a1a;
@@ -180,7 +180,6 @@ function saveEdit(id) {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
-/* Typography */
 .title {
   text-align: center;
   color: #ffffff;
@@ -196,7 +195,7 @@ function saveEdit(id) {
   font-size: 14px;
 }
 
-/* Input Group */
+
 .input-group {
   display: flex;
   gap: 10px;
@@ -366,7 +365,7 @@ function saveEdit(id) {
   font-size: 16px;
 }
 
-/* Footer */
+
 .footer {
   margin-top: 30px;
   padding-top: 20px;
