@@ -23,7 +23,7 @@ onMounted(() => {
       { id: 1, text: 'Learn Vue', completed: false },
       { id: 2, text: 'Build Todo App', completed: false },
       { id: 3, text: 'Show my team', completed: false },
-      { id: 3, text: 'Fix Update', completed: false }
+      { id: 4, text: 'Fix Update', completed: false }  // FIXED: Changed from id: 3 to id: 4
     ]
     saveTodos()
   }
@@ -59,7 +59,6 @@ function deleteTodo(id) {
   saveTodos()
 }
 
-
 function startEdit(todo) {
   editingId.value = todo.id
   editText.value = todo.text
@@ -91,7 +90,6 @@ function saveEdit(id) {
       <h1 class="title">My Todo App</h1>
       <p class="subtitle">ORGANISE YOUR DELIVERABLES</p>
       
-     
       <div class="input-group">
         <input 
           v-model="newTodoText"
@@ -104,7 +102,6 @@ function saveEdit(id) {
         </button>
       </div>
       
-     
       <ul class="todo-list">
         <li v-for="todo in todos" :key="todo.id" class="todo-item">
           
@@ -115,7 +112,6 @@ function saveEdit(id) {
             class="checkbox"
           >
           
-        
           <span 
             v-if="editingId !== todo.id"
             :class="['todo-text', { completed: todo.completed }]"
@@ -124,7 +120,6 @@ function saveEdit(id) {
             {{ todo.text }}
           </span>
 
-         
           <input 
             v-else
             v-model="editText"
@@ -134,7 +129,6 @@ function saveEdit(id) {
             autofocus
           >
           
-        
           <div class="actions">
             <template v-if="editingId === todo.id">
               <button @click="saveEdit(todo.id)" class="btn-save">
@@ -156,12 +150,10 @@ function saveEdit(id) {
         </li>
       </ul>
       
-     
       <div v-if="todos.length === 0" class="empty-state">
         No todos yet. Add one above to get started! 🚀
       </div>
       
- 
       <div class="footer">
         <p>{{ remainingText }}</p>
       </div>
@@ -171,7 +163,7 @@ function saveEdit(id) {
 </template>
 
 <style scoped>
-
+/* Container & Layout */
 .app-container {
   min-height: 100vh;
   background: #1a1a1a;
@@ -179,15 +171,16 @@ function saveEdit(id) {
 }
 
 .card {
-  max-width: 600px;
+  width: 95%;
+  max-width: 1200px;
   margin: 50px auto;
-  padding: 30px;
+  padding: 40px;
   background: #2d2d2d;
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
-
+/* Typography */
 .title {
   text-align: center;
   color: #ffffff;
@@ -203,6 +196,7 @@ function saveEdit(id) {
   font-size: 14px;
 }
 
+/* Input Group */
 .input-group {
   display: flex;
   gap: 10px;
@@ -225,7 +219,7 @@ function saveEdit(id) {
   border-color: #4CAF50;
 }
 
-
+/* Buttons */
 .btn-add {
   padding: 14px 28px;
   background: #4CAF50;
@@ -280,6 +274,11 @@ function saveEdit(id) {
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
+  transition: background 0.3s;
+}
+
+.btn-save:hover {
+  background: #45a049;
 }
 
 .btn-cancel {
@@ -290,9 +289,14 @@ function saveEdit(id) {
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
+  transition: background 0.3s;
 }
 
+.btn-cancel:hover {
+  background: #555;
+}
 
+/* Todo List */
 .todo-list {
   list-style: none;
   padding: 0;
@@ -327,6 +331,8 @@ function saveEdit(id) {
   font-size: 16px;
   color: #e0e0e0;
   word-break: break-word;
+  cursor: pointer;
+  user-select: none;
 }
 
 .todo-text.completed {
@@ -336,7 +342,7 @@ function saveEdit(id) {
 
 .edit-input {
   flex: 1;
-  padding: 8px;
+  padding: 10px;
   border: 2px solid #4CAF50;
   border-radius: 4px;
   background: #2d2d2d;
@@ -351,7 +357,7 @@ function saveEdit(id) {
   flex-shrink: 0;
 }
 
-
+/* Empty State */
 .empty-state {
   text-align: center;
   padding: 50px 20px;
@@ -360,7 +366,7 @@ function saveEdit(id) {
   font-size: 16px;
 }
 
-
+/* Footer */
 .footer {
   margin-top: 30px;
   padding-top: 20px;
@@ -374,6 +380,13 @@ function saveEdit(id) {
   margin: 0;
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    max-width: 700px;
+    padding: 30px;
+  }
+}
 
 @media (max-width: 640px) {
   .app-container {
@@ -381,6 +394,7 @@ function saveEdit(id) {
   }
 
   .card {
+    width: 100%;
     margin: 20px auto;
     padding: 20px;
   }
